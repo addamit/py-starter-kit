@@ -65,9 +65,27 @@ init:
 
 	echo "Hello World" >> $(SRC_DIR)/$(TEMPLATES_DIR)/index.html
 
+	@echo "\033[92mCreating test case.\033[0m"
+
+	echo "import unittest" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "import appy" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo " " >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "class AppyTestCase(unittest.TestCase):" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo " " >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "    def setUp(self):" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "        self.app = appy.app.test_client()" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo " " >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "    def test_index(self):" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "        rv = self.app.get('/')" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "        self.assertIn('Hello World', rv.data.decode())" >> $(TEST_DIR)/test_$(SRC_DIR).py
+
+	echo " " >> $(TEST_DIR)/test_$(SRC_DIR).py
+
+	echo "if __name__ == '__main__':" >> $(TEST_DIR)/test_$(SRC_DIR).py
+	echo "    unittest.main()" >> $(TEST_DIR)/test_$(SRC_DIR).py
+
+
 	@echo "\033[92mDONE.\033[0m"
-
-
 
 
 clean:
@@ -76,11 +94,6 @@ clean:
 	rm MANIFEST.in
 	echo Done
 
-
-.PHONY: all
-
-all: 
-	echo 'executing run command'
 
 mkenv:
 	virtualenv venv
