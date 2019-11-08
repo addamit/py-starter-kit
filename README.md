@@ -15,7 +15,7 @@
 ## Run test cases
 `make tests`
 
-## Want to use a new library ?  
+## Want to add a new python package ?  
 Simply add it to the list of packages in setup.py and run 
 `make run` again   
 This will install all the dependencies in the virtual environment and start the application 
