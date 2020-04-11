@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-base_blueprint = Blueprint(
+blueprint = Blueprint(
 	'base_blueprint', 
 	__name__,
 	url_prefix='',
