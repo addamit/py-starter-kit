@@ -1,20 +1,23 @@
 from bcrypt import checkpw
 from flask import jsonify, render_template, redirect, request, url_for
-# from flask_login import (
-#     current_user,
-#     login_required,
-#     login_user,
-#     logout_user
-# )
+
 
 # from appy import db, login_manager
 from appy.base import blueprint
 from appy.base.forms import LoginForm, CreateAccountForm
 
+from appy.base.linechart import js, div, cdn_js, cdn_css
+
 @blueprint.route('/')
 def route_default():
 	current_user = {'username' : 'anonymous' }
 	return render_template('plain_page.html', current_user=current_user)
+
+@blueprint.route('/bktest')
+def bktest_route():
+	current_user = {'username' : 'anonymous' }
+	return render_template('plain_page.html', current_user=current_user, 
+		js=js, div=div, cdn_js=cdn_js, cdn_css=cdn_css)	
 
 @blueprint.route('/login', methods=['GET', 'POST'])
 def login():

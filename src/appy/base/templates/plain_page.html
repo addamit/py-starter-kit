@@ -4,6 +4,8 @@
 
 {% block stylesheets %}
   {{ super() }}
+  
+  <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.1.min.css" type="text/css" />
 {% endblock stylesheets %}
 
 {% block content %}
@@ -41,7 +43,8 @@
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                  Add content to the page ...
+                  {{js|safe}}
+                  {{div|safe}}
               </div>
             </div>
           </div>
@@ -52,5 +55,6 @@
 
 {% block javascripts %}
   {{ super() }}
+  
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.1.min.js"></script>
 {% endblock javascripts %}
-
